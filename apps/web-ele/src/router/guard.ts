@@ -54,6 +54,29 @@ function setupAccessGuard(router: Router) {
       return true;
     }
 
+    // 处理 /auth/login 路径，直接重定向到默认首页
+    if (to.path.startsWith('/auth/login')) {
+      const redirect = to.query.redirect as string;
+      if (redirect) {
+        return {
+          path: decodeURIComponent(redirect),
+          replace: true,
+        };
+      }
+      return {
+        path: preferences.app.defaultHomePath,
+        replace: true,
+      };
+    }
+
+    // 处理 /analytics 路径，重定向到 /profile/skills
+    if (to.path.startsWith('/analytics')) {
+      return {
+        path: '/profile/skills',
+        replace: true,
+      };
+    }
+
     // 模拟已登录状态，直接生成路由表
     if (!accessStore.accessToken) {
       // 模拟用户信息
