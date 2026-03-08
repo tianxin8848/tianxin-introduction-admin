@@ -4,7 +4,9 @@
     <div v-if="!isAuthenticated" class="fixed inset-0 bg-black/50 backdrop-blur-md flex items-center justify-center z-50">
       <!-- 密码输入弹窗 -->
       <div class="bg-white/90 backdrop-blur-sm rounded-lg p-8 shadow-2xl max-w-md w-full">
-        <h2 class="text-xl font-bold mb-6 text-center">请输入密码</h2>
+        <h2 class="text-xl font-bold mb-6 text-center">请面试官输入密码</h2>
+        <h2 class="text-xl font-bold mb-6 text-center">非面试官请浏览其他公共内容</h2>
+
         <div class="space-y-4">
           <div>
             <label class="block text-sm font-medium mb-2">密码</label>
