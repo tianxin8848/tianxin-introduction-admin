@@ -17,7 +17,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<Props>(), {
   description: '',
-  homePath: '/',
+  homePath: '/profile',
   image: '',
   showBack: true,
   status: 'coming-soon',

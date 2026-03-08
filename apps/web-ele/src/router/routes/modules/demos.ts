@@ -2,6 +2,7 @@ import type { RouteRecordRaw } from 'vue-router';
 
 import { $t } from '#/locales';
 
+/*
 const routes: RouteRecordRaw[] = [
   {
     meta: {
@@ -32,5 +33,10 @@ const routes: RouteRecordRaw[] = [
     ],
   },
 ];
+
+export default routes;
+*/
+
+const routes: RouteRecordRaw[] = [];
 
 export default routes;
