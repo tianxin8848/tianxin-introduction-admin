@@ -11,5 +11,21 @@
     "title": "概览",
     "analytics": "分析页",
     "workspace": "工作台"
+  },
+  "japanese": {
+    "title": "日语人生",
+    "cultural": "日语文创",
+    "market": "日语市场"
+  },
+  "korean": {
+    "title": "韩语人生",
+    "cultural": "韩语文创",
+    "market": "韩语市场"
+  },
+  "profile": {
+    "title": "个人主页",
+    "info": "个人信息",
+    "achievements": "21世纪ai产品展示",
+    "skills": "个人技能"
   }
 }

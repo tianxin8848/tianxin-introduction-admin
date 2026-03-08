@@ -1,11 +1,13 @@
 import type { RouteRecordRaw } from 'vue-router';
 
+import { $t } from '#/locales';
+
 const routes: RouteRecordRaw[] = [
   {
     meta: {
       icon: 'lucide:globe-2',
       order: 20,
-      title: '日语人生',
+      title: $t('page.japanese.title'),
     },
     name: 'JapaneseLife',
     path: '/japanese',
@@ -16,7 +18,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('#/views/japanese/cultural/index.vue'),
         meta: {
           icon: 'lucide:palette',
-          title: '日语文创',
+          title: $t('page.japanese.cultural'),
         },
       },
       {
@@ -25,7 +27,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('#/views/japanese/market/index.vue'),
         meta: {
           icon: 'lucide:shopping-cart',
-          title: '日语市场',
+          title: $t('page.japanese.market'),
         },
       },
     ],

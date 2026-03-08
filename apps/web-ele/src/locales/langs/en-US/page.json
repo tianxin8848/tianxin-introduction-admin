@@ -11,5 +11,21 @@
     "title": "Dashboard",
     "analytics": "Analytics",
     "workspace": "Workspace"
+  },
+  "japanese": {
+    "title": "Japanese Life",
+    "cultural": "Japanese Cultural",
+    "market": "Japanese Market"
+  },
+  "korean": {
+    "title": "Korean Life",
+    "cultural": "Korean Cultural",
+    "market": "Korean Market"
+  },
+  "profile": {
+    "title": "Profile",
+    "info": "Personal Information",
+    "achievements": "21st Century AI Products",
+    "skills": "Personal Skills"
   }
 }

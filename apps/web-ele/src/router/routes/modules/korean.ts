@@ -1,11 +1,13 @@
 import type { RouteRecordRaw } from 'vue-router';
 
+import { $t } from '#/locales';
+
 const routes: RouteRecordRaw[] = [
   {
     meta: {
       icon: 'lucide:globe',
       order: 10,
-      title: '韩语人生',
+      title: $t('page.korean.title'),
     },
     name: 'KoreanLife',
     path: '/korean',
@@ -16,7 +18,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('#/views/korean/cultural/index.vue'),
         meta: {
           icon: 'lucide:palette',
-          title: '韩语文创',
+          title: $t('page.korean.cultural'),
         },
       },
       {
@@ -25,7 +27,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('#/views/korean/market/index.vue'),
         meta: {
           icon: 'lucide:shopping-cart',
-          title: '韩语市场',
+          title: $t('page.korean.market'),
         },
       },
     ],

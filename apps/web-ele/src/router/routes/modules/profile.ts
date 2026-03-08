@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
     meta: {
       icon: 'lucide:user',
       order: 0,
-      title: '个人主页',
+      title: $t('page.profile.title'),
     },
     name: 'Profile',
     path: '/profile',
@@ -18,7 +18,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('#/views/profile/info/index.vue'),
         meta: {
           icon: 'lucide:user-circle',
-          title: '个人信息',
+          title: $t('page.profile.info'),
         },
       },
       {
@@ -27,7 +27,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('#/views/profile/achievements/index.vue'),
         meta: {
           icon: 'lucide:trophy',
-          title: '21世纪ai产品展示',
+          title: $t('page.profile.achievements'),
         },
       },
       {
@@ -36,7 +36,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('#/views/profile/skills/index.vue'),
         meta: {
           icon: 'lucide:code-2',
-          title: '个人技能',
+          title: $t('page.profile.skills'),
         },
       },
     ],
