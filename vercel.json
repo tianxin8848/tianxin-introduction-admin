@@ -6,7 +6,7 @@
       "use": "@vercel/static-build",
       "config": {
         "distDir": "apps/web-ele/dist",
-        "buildCommand": "npm install -g pnpm@10.28.2 && pnpm install && pnpm run build:ele"
+        "buildCommand": "npx pnpm@10.28.2 install && npx pnpm@10.28.2 run build:ele"
       }
     }
   ],
