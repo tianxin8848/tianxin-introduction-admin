@@ -27,7 +27,7 @@ const routes: RouteRecordRaw[] = [
         component: () => import('#/views/profile/achievements/index.vue'),
         meta: {
           icon: 'lucide:trophy',
-          title: '个人成果展示',
+          title: '21世纪ai产品展示',
         },
       },
       {

@@ -1,12 +1,19 @@
 <template>
   <div class="p-6">
-    <h1 class="text-2xl font-bold mb-4">个人成果展示</h1>
-    <div class="mt-4">
-      <p class="text-gray-600">这里是个人成果展示页面，用于展示个人的项目成果和成就。</p>
+    <h1 class="text-2xl font-bold mb-4">21世纪ai产品展示</h1>
+    
+    <div class="mt-5 flex flex-col lg:flex-row gap-6">
+      <div class="w-full lg:w-1/2">
+        <DomesticAICard />
+      </div>
+      <div class="w-full lg:w-1/2">
+        <InternationalAICard />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// 个人成果展示页面逻辑
+import DomesticAICard from './achiveCom/DomesticAICard.vue';
+import InternationalAICard from './achiveCom/InternationalAICard.vue';
 </script>
