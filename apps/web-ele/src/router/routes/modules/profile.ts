@@ -39,6 +39,15 @@ const routes: RouteRecordRaw[] = [
           title: $t('page.profile.skills'),
         },
       },
+      {
+        name: 'ProfileProjects',
+        path: '/profile/projects',
+        component: () => import('#/views/profile/projects/index.vue'),
+        meta: {
+          icon: 'lucide:folder',
+          title: $t('page.profile.projects'),
+        },
+      },
     ],
   },
 ];

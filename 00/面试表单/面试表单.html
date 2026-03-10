@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简历信息填写表单</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+        
+        .form-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .form-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .form-header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            font-weight: 500;
+        }
+        
+        .form-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .form-content {
+            padding: 40px;
+        }
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px 20px;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+            padding: 0 15px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group.full-width {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+        
+        .form-group.half-width {
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        label .required {
+            color: #ff4d4f;
+            margin-left: 4px;
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s;
+            font-family: 'Microsoft YaHei', sans-serif;
+        }
+        
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        input[type="file"] {
+            padding: 8px;
+            background: #f8f9fa;
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .photo-section {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .photo-upload {
+            width: 120px;
+            height: 150px;
+            border: 2px dashed #667eea;
+            border-radius: 10px;
+            background: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            overflow: hidden;
+        }
+        
+        .photo-upload:hover {
+            background: #e8eaf6;
+            border-color: #764ba2;
+        }
+        
+        .photo-upload span {
+            font-size: 30px;
+            margin-bottom: 5px;
+            color: #667eea;
+        }
+        
+        .photo-upload p {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        .photo-upload img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .photo-info {
+            color: #666;
+            font-size: 13px;
+        }
+        
+        .section-title {
+            font-size: 20px;
+            color: #333;
+            margin: 30px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            position: relative;
+        }
+        
+        .section-title:before {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: #764ba2;
+        }
+        
+        .work-experience, .education-experience {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .work-experience-header, .education-experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .add-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        
+        .add-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .remove-btn {
+            background: #ff4d4f;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .btn {
+            padding: 14px 40px;
+            border: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+        
+        .btn-secondary:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+        }
+        
+        @media (max-width: 768px) {
+            .form-content {
+                padding: 20px;
+            }
+            
+            .form-group.half-width {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
+            
+            .photo-section {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h1>简历信息填写表</h1>
+            <p>请如实填写以下信息，所有信息将严格保密</p>
+        </div>
+        
+        <div class="form-content">
+            <!-- 基本信息区域 -->
+            <h2 class="section-title">基本信息</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>姓名 <span class="required">*</span></label>
+                    <input type="text" placeholder="请输入姓名">
+                </div>
+                <div class="form-group">
+                    <label>性别 <span class="required">*</span></label>
+                    <select>
+                        <option value="">请选择</option>
+                        <option value="male">男</option>
+                        <option value="female">女</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>民族</label>
+                    <input type="text" placeholder="请输入民族">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>出生日期 <span class="required">*</span></label>
+                    <input type="date">
+                </div>
+                <div class="form-group">
+                    <label>年龄</label>
+                    <input type="number" placeholder="自动计算">
+                </div>
+                <div class="form-group">
+                    <label>婚姻状况</label>
+                    <select>
+                        <option value="">请选择</option>
+                        <option value="unmarried">未婚</option>
+                        <option value="married">已婚</option>
+                        <option value="divorced">离异</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group half-width">
+                    <label>籍贯</label>
+                    <input type="text" placeholder="请输入籍贯">
+                </div>
+                <div class="form-group half-width">
+                    <label>政治面貌</label>
+                    <select>
+                        <option value="">请选择</option>
+                        <option value="communist">中共党员</option>
+                        <option value="league">共青团员</option>
+                        <option value="masses">群众</option>
+                        <option value="other">其他</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- 照片区域 -->
+            <div class="form-row">
+                <div class="form-group">
+                    <label>照片</label>
+                    <div class="photo-section">
+                        <div class="photo-upload" onclick="document.getElementById('photoInput').click()">
+                            <span>📷</span>
+                            <p>点击上传照片</p>
+                        </div>
+                        <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                        <div class="photo-info">
+                            <p>支持格式：JPG、PNG</p>
+                            <p>建议尺寸：2寸证件照</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 求职信息区域 -->
+            <h2 class="section-title">求职信息</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>应聘职位 <span class="required">*</span></label>
+                    <input type="text" placeholder="请输入应聘职位">
+                </div>
+                <div class="form-group">
+                    <label>联系方式 <span class="required">*</span></label>
+                    <input type="tel" placeholder="请输入手机号码">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>专业</label>
+                    <input type="text" placeholder="请输入专业">
+                </div>
+                <div class="form-group">
+                    <label>毕业院校</label>
+                    <input type="text" placeholder="请输入毕业院校">
+                </div>
+            </div>
+            
+            <!-- 工作技能区域 -->
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <label>工作技能</label>
+                    <textarea placeholder="请描述您的工作技能，多个技能请用逗号分隔"></textarea>
+                </div>
+            </div>
+            
+            <!-- 工作经历区域 -->
+            <h2 class="section-title">工作经历</h2>
+            <div id="workExperiences">
+                <div class="work-experience">
+                    <div class="form-row">
+                        <div class="form-group half-width">
+                            <label>起止时间</label>
+                            <input type="text" placeholder="例如：2020.01-2022.12">
+                        </div>
+                        <div class="form-group half-width">
+                            <label>单位名称</label>
+                            <input type="text" placeholder="请输入单位名称">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group half-width">
+                            <label>工作职务</label>
+                            <input type="text" placeholder="请输入职务">
+                        </div>
+                        <div class="form-group half-width">
+                            <label>离职原因</label>
+                            <input type="text" placeholder="请输入离职原因">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="work-experience-header">
+                <button class="add-btn" onclick="addWorkExperience()">+ 添加更多工作经历</button>
+            </div>
+            
+            <!-- 教育经历区域 -->
+            <h2 class="section-title">教育经历</h2>
+            <div id="educationExperiences">
+                <div class="education-experience">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>教育机构名称</label>
+                            <input type="text" placeholder="请输入学校名称">
+                        </div>
+                        <div class="form-group">
+                            <label>起止时间</label>
+                            <input type="text" placeholder="例如：2016.09-2020.06">
+                        </div>
+                        <div class="form-group">
+                            <label>学历</label>
+                            <select>
+                                <option value="">请选择</option>
+                                <option value="junior">初中</option>
+                                <option value="high">高中/中专</option>
+                                <option value="college">大专</option>
+                                <option value="bachelor">本科</option>
+                                <option value="master">硕士</option>
+                                <option value="doctor">博士</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="education-experience-header">
+                <button class="add-btn" onclick="addEducationExperience()">+ 添加更多教育经历</button>
+            </div>
+            
+            <!-- 自我评价区域 -->
+            <h2 class="section-title">自我评价</h2>
+            <div class="form-row">
+                <div class="form-group full-width">
+                    <textarea placeholder="请填写自我评价，展示您的优势和特点..."></textarea>
+                </div>
+            </div>
+            
+            <!-- 其他信息区域 -->
+            <h2 class="section-title">其他信息</h2>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>期望薪资</label>
+                    <input type="text" placeholder="例如：15k-20k">
+                </div>
+                <div class="form-group">
+                    <label>紧急联系电话（关系）</label>
+                    <input type="text" placeholder="例如：张三(父子)">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>现居住地</label>
+                    <input type="text" placeholder="请输入详细地址">
+                </div>
+                <div class="form-group">
+                    <label>兴趣/爱好</label>
+                    <input type="text" placeholder="例如：阅读、运动">
+                </div>
+            </div>
+            
+            <!-- 提交按钮 -->
+            <div class="form-actions">
+                <button class="btn btn-primary">提交简历</button>
+                <button class="btn btn-secondary">重置信息</button>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function addWorkExperience() {
+            const container = document.getElementById('workExperiences');
+            const newExp = document.createElement('div');
+            newExp.className = 'work-experience';
+            newExp.innerHTML = `
+                <div class="form-row">
+                    <div class="form-group half-width">
+                        <label>起止时间</label>
+                        <input type="text" placeholder="例如：2020.01-2022.12">
+                    </div>
+                    <div class="form-group half-width">
+                        <label>单位名称</label>
+                        <input type="text" placeholder="请输入单位名称">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group half-width">
+                        <label>工作职务</label>
+                        <input type="text" placeholder="请输入职务">
+                    </div>
+                    <div class="form-group half-width">
+                        <label>离职原因</label>
+                        <input type="text" placeholder="请输入离职原因">
+                    </div>
+                </div>
+                <button class="remove-btn" onclick="this.parentElement.remove()">删除</button>
+            `;
+            container.appendChild(newExp);
+        }
+        
+        function addEducationExperience() {
+            const container = document.getElementById('educationExperiences');
+            const newExp = document.createElement('div');
+            newExp.className = 'education-experience';
+            newExp.innerHTML = `
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>教育机构名称</label>
+                        <input type="text" placeholder="请输入学校名称">
+                    </div>
+                    <div class="form-group">
+                        <label>起止时间</label>
+                        <input type="text" placeholder="例如：2016.09-2020.06">
+                    </div>
+                    <div class="form-group">
+                        <label>学历</label>
+                        <select>
+                            <option value="">请选择</option>
+                            <option value="junior">初中</option>
+                            <option value="high">高中/中专</option>
+                            <option value="college">大专</option>
+                            <option value="bachelor">本科</option>
+                            <option value="master">硕士</option>
+                            <option value="doctor">博士</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="remove-btn" onclick="this.parentElement.remove()">删除</button>
+            `;
+            container.appendChild(newExp);
+        }
+        
+        // 年龄自动计算（简单示例）
+        document.querySelector('input[type="date"]').addEventListener('change', function() {
+            if (this.value) {
+                const birthDate = new Date(this.value);
+                const today = new Date();
+                let age = today.getFullYear() - birthDate.getFullYear();
+                const monthDiff = today.getMonth() - birthDate.getMonth();
+                if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+                    age--;
+                }
+                document.querySelector('input[type="number"]').value = age;
+            }
+        });
+    </script>
+</body>
+</html>
