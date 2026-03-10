@@ -81,11 +81,15 @@ function setupAccessGuard(router: Router) {
     if (!accessStore.accessToken) {
       // 模拟用户信息
       const mockUserInfo = {
+        avatar: 'https://neeko-copilot.bytedance.net/api/text2image?prompt=professional%20avatar&size=200x200',
+        realName: '测试用户',
         roles: ['super'],
+        userId: '1',
+        username: 'test',
         homePath: preferences.app.defaultHomePath,
       };
       // 设置用户信息
-      userStore.setUserInfo(mockUserInfo);
+      userStore.setUserInfo(mockUserInfo as any);
       // 设置访问令牌
       accessStore.setAccessToken('mock-token');
     }
