@@ -78,9 +78,10 @@ function setupAccessGuard(router: Router) {
     }
 
     // 模拟已登录状态，直接生成路由表
+    let userInfo = userStore.userInfo;
     if (!accessStore.accessToken) {
       // 模拟用户信息
-      const mockUserInfo = {
+      userInfo = {
         avatar: 'https://neeko-copilot.bytedance.net/api/text2image?prompt=professional%20avatar&size=200x200',
         realName: '测试用户',
         roles: ['super'],
@@ -89,7 +90,7 @@ function setupAccessGuard(router: Router) {
         homePath: preferences.app.defaultHomePath,
       };
       // 设置用户信息
-      userStore.setUserInfo(mockUserInfo as any);
+      userStore.setUserInfo(userInfo as any);
       // 设置访问令牌
       accessStore.setAccessToken('mock-token');
     }
@@ -101,8 +102,7 @@ function setupAccessGuard(router: Router) {
 
     // 生成路由表
     // 当前登录用户拥有的角色标识列表
-    const userInfo = userStore.userInfo || (await authStore.fetchUserInfo());
-    const userRoles = userInfo.roles ?? [];
+    const userRoles = userInfo?.roles ?? [];
 
     // 生成菜单和路由
     const { accessibleMenus, accessibleRoutes } = await generateAccess({
