@@ -54,12 +54,12 @@
 import { ref, defineAsyncComponent } from 'vue'
 
 // 动态导入 Element Plus 组件
-const ElForm = defineAsyncComponent(() => import('element-plus/es/components/form/index.vue'));
-const ElFormItem = defineAsyncComponent(() => import('element-plus/es/components/form-item/index.vue'));
-const ElRow = defineAsyncComponent(() => import('element-plus/es/components/row/index.vue'));
-const ElCol = defineAsyncComponent(() => import('element-plus/es/components/col/index.vue'));
-const ElTable = defineAsyncComponent(() => import('element-plus/es/components/table/index.vue'));
-const ElTableColumn = defineAsyncComponent(() => import('element-plus/es/components/table-column/index.vue'));
+const ElForm = defineAsyncComponent(() => import('element-plus/es/components/form/index'));
+const ElFormItem = defineAsyncComponent(() => import('element-plus/es/components/form-item/index'));
+const ElRow = defineAsyncComponent(() => import('element-plus/es/components/row/index'));
+const ElCol = defineAsyncComponent(() => import('element-plus/es/components/col/index'));
+const ElTable = defineAsyncComponent(() => import('element-plus/es/components/table/index'));
+const ElTableColumn = defineAsyncComponent(() => import('element-plus/es/components/table-column/index'));
 
 // 导入样式
 import 'element-plus/es/components/form/style/css';
