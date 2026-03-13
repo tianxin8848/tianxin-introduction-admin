@@ -122,6 +122,25 @@ const projectItems: WorkbenchProjectItem[] = [
     title: 'Vue 项目',
     url: 'https://vuejs.org',
   },
+  {
+    color: '#F7DF1E',
+    content: '使用 Node.js 开发的后端服务',
+    date: '2025-01-01',
+    group: 'JavaScript',
+    icon: 'logos:nodejs',
+    title: 'Node.js 项目',
+    url: 'https://nodejs.org',
+  },
+  {
+    color: '#2496ED',
+    content: '使用 Docker 容器化部署应用',
+    date: '2025-01-01',
+    group: 'DevOps',
+    icon: 'logos:docker',
+    title: 'Docker 容器',
+    url: 'https://docker.com',
+  }
+
 ];
 
 
