@@ -12,7 +12,7 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         name: 'ReferenceBooks',
-        path: '/reference/:bookId?',
+        path: 'reference',
         component: () => import('#/views/books/reference/index.vue'),
         meta: {
           icon: 'lucide:book-open',
@@ -20,8 +20,18 @@ const routes: RouteRecordRaw[] = [
         },
       },
       {
+        name: 'ReferenceBookDetail',
+        path: 'reference/:bookId',
+        component: () => import('#/views/books/reference/index.vue'),
+        meta: {
+          icon: 'lucide:book-open',
+          title: '工具书详情',
+          hideInMenu: true,
+        },
+      },
+      {
         name: 'Philosophy',
-        path: '/philosophy',
+        path: 'philosophy',
         component: () => import('#/views/books/philosophy/index.vue'),
         meta: {
           icon: 'lucide:brain',
@@ -30,7 +40,7 @@ const routes: RouteRecordRaw[] = [
       },
       {
         name: 'EconomicsHistory',
-        path: '/economics-history',
+        path: 'economics-history',
         component: () => import('#/views/books/economics-history/index.vue'),
         meta: {
           icon: 'lucide:trending-up',
