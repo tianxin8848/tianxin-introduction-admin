@@ -1,7 +1,5 @@
 import type { RouteRecordRaw } from 'vue-router';
 
-import { $t } from '#/locales';
-
 const routes: RouteRecordRaw[] = [
   {
     meta: {
@@ -14,7 +12,7 @@ const routes: RouteRecordRaw[] = [
     children: [
       {
         name: 'ReferenceBooks',
-        path: '/reference',
+        path: '/reference/:bookId?',
         component: () => import('#/views/books/reference/index.vue'),
         meta: {
           icon: 'lucide:book-open',
