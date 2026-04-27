@@ -43,7 +43,7 @@
     "@vueuse/core": "catalog:",
     "dayjs": "catalog:",
     "element-plus": "catalog:",
-    "pdfjs-dist": "^5.5.207",
+    "pdfjs-dist": "^5.6.205",
     "pinia": "catalog:",
     "vue": "catalog:",
     "vue-router": "catalog:"
